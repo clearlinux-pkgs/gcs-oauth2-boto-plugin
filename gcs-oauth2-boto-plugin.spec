@@ -4,17 +4,20 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 1.14
-Release  : 3
+Release  : 4
 URL      : http://pypi.debian.net/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.14.tar.gz
-Source0  : https://pypi.python.org/packages/1b/fc/500e79d082b7edfc93548a44b86a32c4c564c677e50e93959b23be7d21c3/gcs-oauth2-boto-plugin-1.14.tar.gz
+Source0  : http://pypi.debian.net/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.14.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
 Group    : Development/Tools
 License  : Apache-2.0
+Requires: gcs-oauth2-boto-plugin-legacypython
 Requires: gcs-oauth2-boto-plugin-python
+Requires: SocksiPy-branch
 Requires: boto
 Requires: httplib2
 Requires: oauth2client
 Requires: pyOpenSSL
+Requires: retry_decorator
 Requires: six
 BuildRequires : pbr
 BuildRequires : pip
@@ -30,9 +33,18 @@ gcs-oauth2-boto-plugin is a Python application whose purpose is to behave as an
         wrapper around oauth2client with the addition of automatically caching tokens
         for the machine in a thread- and process-safe fashion.
 
+%package legacypython
+Summary: legacypython components for the gcs-oauth2-boto-plugin package.
+Group: Default
+
+%description legacypython
+legacypython components for the gcs-oauth2-boto-plugin package.
+
+
 %package python
 Summary: python components for the gcs-oauth2-boto-plugin package.
 Group: Default
+Requires: gcs-oauth2-boto-plugin-legacypython
 
 %description python
 python components for the gcs-oauth2-boto-plugin package.
@@ -46,12 +58,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1502288463
+export SOURCE_DATE_EPOCH=1505002616
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1502288463
+export SOURCE_DATE_EPOCH=1505002616
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -62,7 +74,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
