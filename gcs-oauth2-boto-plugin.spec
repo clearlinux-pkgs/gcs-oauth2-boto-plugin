@@ -4,7 +4,7 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 1.14
-Release  : 4
+Release  : 5
 URL      : http://pypi.debian.net/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.14.tar.gz
 Source0  : http://pypi.debian.net/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.14.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
@@ -58,12 +58,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505002616
+export SOURCE_DATE_EPOCH=1505364216
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1505002616
+export SOURCE_DATE_EPOCH=1505364216
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
