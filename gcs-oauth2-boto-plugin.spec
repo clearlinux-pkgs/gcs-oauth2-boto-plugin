@@ -4,13 +4,14 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 1.14
-Release  : 5
+Release  : 6
 URL      : http://pypi.debian.net/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.14.tar.gz
 Source0  : http://pypi.debian.net/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.14.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: gcs-oauth2-boto-plugin-legacypython
+Requires: gcs-oauth2-boto-plugin-python3
 Requires: gcs-oauth2-boto-plugin-python
 Requires: SocksiPy-branch
 Requires: boto
@@ -36,6 +37,7 @@ gcs-oauth2-boto-plugin is a Python application whose purpose is to behave as an
 %package legacypython
 Summary: legacypython components for the gcs-oauth2-boto-plugin package.
 Group: Default
+Requires: python-core
 
 %description legacypython
 legacypython components for the gcs-oauth2-boto-plugin package.
@@ -45,9 +47,19 @@ legacypython components for the gcs-oauth2-boto-plugin package.
 Summary: python components for the gcs-oauth2-boto-plugin package.
 Group: Default
 Requires: gcs-oauth2-boto-plugin-legacypython
+Requires: gcs-oauth2-boto-plugin-python3
 
 %description python
 python components for the gcs-oauth2-boto-plugin package.
+
+
+%package python3
+Summary: python3 components for the gcs-oauth2-boto-plugin package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the gcs-oauth2-boto-plugin package.
 
 
 %prep
@@ -58,12 +70,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505364216
+export SOURCE_DATE_EPOCH=1507153824
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1505364216
+export SOURCE_DATE_EPOCH=1507153824
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -79,5 +91,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
