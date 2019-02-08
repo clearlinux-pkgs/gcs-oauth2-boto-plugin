@@ -4,7 +4,7 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 2.2
-Release  : 20
+Release  : 23
 URL      : https://files.pythonhosted.org/packages/8a/21/fd931161be8363b1805e22ae31a67461a511dfc9e5b58d9dd1279e8f3df4/gcs-oauth2-boto-plugin-2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8a/21/fd931161be8363b1805e22ae31a67461a511dfc9e5b58d9dd1279e8f3df4/gcs-oauth2-boto-plugin-2.2.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
@@ -12,7 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0
 Requires: gcs-oauth2-boto-plugin-python = %{version}-%{release}
 Requires: gcs-oauth2-boto-plugin-python3 = %{version}-%{release}
-Requires: SocksiPy-branch
+Requires: PySocks
 Requires: boto
 Requires: google-reauth
 Requires: httplib2
@@ -20,6 +20,7 @@ Requires: oauth2client
 Requires: pyOpenSSL
 Requires: retry_decorator
 Requires: six
+BuildRequires : PySocks
 BuildRequires : buildreq-distutils3
 BuildRequires : retry
 BuildRequires : retry_decorator
@@ -58,11 +59,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546112571
+export SOURCE_DATE_EPOCH=1549666793
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
