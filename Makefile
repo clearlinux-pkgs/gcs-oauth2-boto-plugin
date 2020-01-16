@@ -1,5 +1,5 @@
 PKG_NAME := gcs-oauth2-boto-plugin
-URL = https://files.pythonhosted.org/packages/79/e4/032190c0b1e2330e50f2f87962cf9c9823312607f2c9a11974e2cff2ec80/gcs-oauth2-boto-plugin-2.4.tar.gz
+URL = https://files.pythonhosted.org/packages/11/d0/45b69da0d40365fa8ecdf4f93d7847dc2079845c821edcf183675db0e77a/gcs-oauth2-boto-plugin-2.5.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
