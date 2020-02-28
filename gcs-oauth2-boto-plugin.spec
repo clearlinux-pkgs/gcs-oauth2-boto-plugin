@@ -4,7 +4,7 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 2.5
-Release  : 30
+Release  : 31
 URL      : https://files.pythonhosted.org/packages/11/d0/45b69da0d40365fa8ecdf4f93d7847dc2079845c821edcf183675db0e77a/gcs-oauth2-boto-plugin-2.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/11/d0/45b69da0d40365fa8ecdf4f93d7847dc2079845c821edcf183675db0e77a/gcs-oauth2-boto-plugin-2.5.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
@@ -33,12 +33,14 @@ BuildRequires : six
 Patch1: 0001-Switch-to-PySocks.patch
 
 %description
-gcs-oauth2-boto-plugin is a Python application whose purpose is to behave as an
-        auth plugin for the boto auth plugin framework for use with OAuth 2.0
-        credentials for the Google Cloud Platform. This plugin is compatible with both
-        user accounts and service accounts, and its functionality is essentially a
-        wrapper around oauth2client with the addition of automatically caching tokens
-        for the machine in a thread- and process-safe fashion.
+# gcs-oauth2-boto-plugin
+gcs-oauth2-boto-plugin is a Python application whose purpose is to behave as
+an auth plugin for the [boto] auth plugin framework for use with [OAuth 2.0]
+credentials for the Google Cloud Platform. This plugin is compatible with
+both [user accounts] and [service accounts], and its functionality is
+essentially a wrapper around [oauth2client]
+with the addition of automatically caching tokens
+for the machine in a thread- and process-safe fashion.
 
 %package python
 Summary: python components for the gcs-oauth2-boto-plugin package.
@@ -53,6 +55,7 @@ python components for the gcs-oauth2-boto-plugin package.
 Summary: python3 components for the gcs-oauth2-boto-plugin package.
 Group: Default
 Requires: python3-core
+Provides: pypi(gcs-oauth2-boto-plugin)
 
 %description python3
 python3 components for the gcs-oauth2-boto-plugin package.
@@ -68,7 +71,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579207667
+export SOURCE_DATE_EPOCH=1582925506
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
