@@ -4,7 +4,7 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 2.5
-Release  : 34
+Release  : 35
 URL      : https://files.pythonhosted.org/packages/11/d0/45b69da0d40365fa8ecdf4f93d7847dc2079845c821edcf183675db0e77a/gcs-oauth2-boto-plugin-2.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/11/d0/45b69da0d40365fa8ecdf4f93d7847dc2079845c821edcf183675db0e77a/gcs-oauth2-boto-plugin-2.5.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
@@ -61,7 +61,6 @@ Requires: pypi(oauth2client)
 Requires: pypi(pyopenssl)
 Requires: pypi(retry_decorator)
 Requires: pypi(six)
-Requires: pypi(socksipy_branch)
 
 %description python3
 python3 components for the gcs-oauth2-boto-plugin package.
@@ -77,7 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587684243
+export SOURCE_DATE_EPOCH=1587684461
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
