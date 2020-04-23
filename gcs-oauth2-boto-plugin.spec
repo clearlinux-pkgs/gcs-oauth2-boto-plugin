@@ -4,7 +4,7 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 2.5
-Release  : 33
+Release  : 34
 URL      : https://files.pythonhosted.org/packages/11/d0/45b69da0d40365fa8ecdf4f93d7847dc2079845c821edcf183675db0e77a/gcs-oauth2-boto-plugin-2.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/11/d0/45b69da0d40365fa8ecdf4f93d7847dc2079845c821edcf183675db0e77a/gcs-oauth2-boto-plugin-2.5.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
@@ -77,11 +77,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583534944
+export SOURCE_DATE_EPOCH=1587684243
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
