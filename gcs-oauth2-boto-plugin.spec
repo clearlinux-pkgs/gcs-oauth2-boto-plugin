@@ -4,7 +4,7 @@
 #
 Name     : gcs-oauth2-boto-plugin
 Version  : 3.0
-Release  : 51
+Release  : 52
 URL      : https://files.pythonhosted.org/packages/05/e5/3162be0abab32f152f331423426471935f286dd4ad70fa704f2a34ea3c1e/gcs-oauth2-boto-plugin-3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/05/e5/3162be0abab32f152f331423426471935f286dd4ad70fa704f2a34ea3c1e/gcs-oauth2-boto-plugin-3.0.tar.gz
 Summary  : Auth plugin allowing use the use of OAuth 2.0 credentials for Google Cloud Storage in the Boto library.
@@ -14,25 +14,18 @@ Requires: gcs-oauth2-boto-plugin-license = %{version}-%{release}
 Requires: gcs-oauth2-boto-plugin-python = %{version}-%{release}
 Requires: gcs-oauth2-boto-plugin-python3 = %{version}-%{release}
 Requires: PySocks
-Requires: boto
-Requires: google-reauth
-Requires: httplib2
-Requires: oauth2client
-Requires: pyOpenSSL
-Requires: retry_decorator
-Requires: rsa
-Requires: six
 BuildRequires : PySocks
-BuildRequires : boto
 BuildRequires : buildreq-distutils3
-BuildRequires : google-reauth
-BuildRequires : httplib2
-BuildRequires : oauth2client
-BuildRequires : pyOpenSSL
+BuildRequires : pypi(boto)
+BuildRequires : pypi(google_reauth)
+BuildRequires : pypi(httplib2)
+BuildRequires : pypi(oauth2client)
+BuildRequires : pypi(pyopenssl)
+BuildRequires : pypi(retry_decorator)
+BuildRequires : pypi(rsa)
+BuildRequires : pypi(six)
 BuildRequires : retry
 BuildRequires : retry_decorator
-BuildRequires : rsa
-BuildRequires : six
 
 %description
 gcs-oauth2-boto-plugin is a Python application whose purpose is to behave as an
@@ -86,13 +79,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635729413
+export SOURCE_DATE_EPOCH=1637779070
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
+pypi-dep-fix.py . rsa
 python3 setup.py build
 
 %install
@@ -101,6 +95,7 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gcs-oauth2-boto-plugin
 cp %{_builddir}/gcs-oauth2-boto-plugin-3.0/LICENSE %{buildroot}/usr/share/package-licenses/gcs-oauth2-boto-plugin/5a7d7df655ba40478fae80a6abafc6afc36f9b6a
 python3 -tt setup.py build  install --root=%{buildroot}
+pypi-dep-fix.py %{buildroot} rsa
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----

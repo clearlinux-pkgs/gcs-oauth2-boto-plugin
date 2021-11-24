@@ -1,0 +1,9 @@
+3.0
+pypi(boto)
+pypi(google_reauth)
+pypi(httplib2)
+pypi(oauth2client)
+pypi(pyopenssl)
+pypi(retry_decorator)
+pypi(rsa)
+pypi(six)
